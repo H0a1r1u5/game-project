@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpbkcpynpbg7o"]
+
+[ext_resource type="Texture2D" uid="uid://ddwgqf7njgb2i" path="res://scenes/assets/Radish/Idle 1 (30x38).png" id="1_eovn8"]
+[ext_resource type="Script" path="res://scenes/Codes/enermy.gd" id="1_qc0do"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cilqn"]
+atlas = ExtResource("1_eovn8")
+region = Rect2(0, 0, 30, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1umk"]
+atlas = ExtResource("1_eovn8")
+region = Rect2(30, 0, 30, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2csm2"]
+atlas = ExtResource("1_eovn8")
+region = Rect2(60, 0, 30, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu5ri"]
+atlas = ExtResource("1_eovn8")
+region = Rect2(90, 0, 30, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmxfa"]
+atlas = ExtResource("1_eovn8")
+region = Rect2(120, 0, 30, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u0h7"]
+atlas = ExtResource("1_eovn8")
+region = Rect2(150, 0, 30, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4gq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cilqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1umk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2csm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu5ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmxfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u0h7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f274m"]
+radius = 40.0
+height = 118.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qh3d"]
+radius = 44.0
+height = 124.0
+
+[node name="Enermy" type="RigidBody2D"]
+position = Vector2(9, 1)
+script = ExtResource("1_qc0do")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-12, 9.53674e-07)
+scale = Vector2(3, 2.89474)
+sprite_frames = SubResource("SpriteFrames_q4gq0")
+autoplay = "default"
+frame_progress = 0.376125
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13, 3)
+shape = SubResource("CapsuleShape2D_f274m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-13, 4)
+shape = SubResource("CapsuleShape2D_2qh3d")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
