@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://vmndbgo6ld0"]
+[gd_scene load_steps=45 format=3 uid="uid://vmndbgo6ld0"]
 
 [ext_resource type="Texture2D" uid="uid://q44l70jeki3w" path="res://scenes/assets/00001.png" id="1_cdomj"]
 [ext_resource type="Texture2D" uid="uid://dfka2e4molb1p" path="res://scenes/assets/Idle (32x32).png" id="2_o0qm4"]
 [ext_resource type="Script" path="res://scenes/Codes/little A.gd" id="2_tkca2"]
 [ext_resource type="Texture2D" uid="uid://jyknjk6mhpeg" path="res://scenes/assets/Ghost/Idle (44x30).png" id="3_ip18a"]
 [ext_resource type="Texture2D" uid="uid://bet84umxs8ar7" path="res://scenes/assets/Run (32x32).png" id="4_cx0id"]
+[ext_resource type="PackedScene" uid="uid://brf7ehpcl33fq" path="res://scenes/actionable.tscn" id="6_f2b5g"]
 [ext_resource type="PackedScene" uid="uid://d4ns3bprscmwt" path="res://scenes/dialouagebox.tscn" id="6_ohjlb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mod2r"]
@@ -282,6 +283,7 @@ texture = ExtResource("1_cdomj")
 [node name="little A" type="CharacterBody2D" parent="."]
 position = Vector2(57, 0)
 script = ExtResource("2_tkca2")
+metadata/player = false
 
 [node name="sprite2D" type="AnimatedSprite2D" parent="little A"]
 texture_filter = 1
@@ -313,6 +315,9 @@ frame_progress = 0.833508
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shade"]
 position = Vector2(303, 493.75)
 shape = SubResource("RectangleShape2D_7mepd")
+
+[node name="Area2D" parent="shade" node_paths=PackedStringArray("dialogue") instance=ExtResource("6_f2b5g")]
+dialogue = NodePath("../../dialouagebox")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
