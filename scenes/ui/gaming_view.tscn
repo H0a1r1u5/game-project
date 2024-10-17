@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://bobb3e6pl7fjh"]
+
+[ext_resource type="Script" path="res://scripts/ui/gaming_view.gd" id="1_1il1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgi1b"]
+bg_color = Color(0.641934, 0.641934, 0.641934, 0.588235)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="GamingView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1il1h")
+sentence = Array[String](["Hello", "Please collect 12 stars and pass through the portal", "Be careful not to touch the enemy"])
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Info" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 39.0
+offset_right = 239.0
+offset_bottom = 100.0
+
+[node name="HP" type="HBoxContainer" parent="Info"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/HP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HP:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPLab" type="Label" parent="Info/HP"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "111"
+vertical_alignment = 1
+
+[node name="Stars" type="HBoxContainer" parent="Info"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/Stars"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Star:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarLab" type="Label" parent="Info/Stars"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "111"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(600, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -108.0
+offset_right = 306.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueLab" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_mgi1b")
+text = "Hello world!"
+horizontal_alignment = 1
+vertical_alignment = 1
